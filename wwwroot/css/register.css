@@ -82,13 +82,13 @@ html {
   .div1 {
     width: 45%;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
   }
 
   .div2 {
     width: 55%;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.7);
   }
   
 
@@ -152,9 +152,9 @@ html {
     margin-left: 30%;
   }
 
-  .play-button {
+  .register-button2 {
     display: inline-block;
-    padding: 10px 144px;
+    padding: 10px 127px;
     background-color: #f2f2f2;
     border: none;
     border-radius: 0px;
@@ -165,16 +165,16 @@ html {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
     margin: 2rem auto; /* Adiciona margem para centralizar e ajustar a distância */
-    margin-top: 35px; /* Ajuste a distância desejada */
-    margin-left: 30%;
+    margin-top: 90%; /* Ajuste a distância desejada */
+    margin-left: 50%;
   }
   
   
-  .play-button:hover {
+  .register-button2:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  .play-button:active {
+  .register-button2:active {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     transform: translateY(2px);
   }
