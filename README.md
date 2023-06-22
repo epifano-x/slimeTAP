@@ -1,6 +1,6 @@
 # SlimeTAP
 
-SlimeTAP is a mobile game developed as a web application based on Razor Pages. It is a fun pastime where each tap on the screen earns the player gold coins. These coins can be used to purchase upgrades for the tap, increasing the value earned per tap or the quantity of taps.
+SlimeTAP is a game developed as a web application based on Razor Pages. It is a fun pastime where each tap on the screen earns the player gold coins. These coins can be used to purchase upgrades for the tap, increasing the value earned per tap or the quantity of taps.
 
 ## Key Features
 
