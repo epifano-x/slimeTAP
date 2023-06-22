@@ -11,13 +11,17 @@ SlimeTAP is a mobile game developed as a web application based on Razor Pages. I
 
 ## Running the Project
 
-To run the SlimeTAP project, follow the steps below:
+To run the SlimeTAP project on your local environment, follow the steps below:
 
 1. Make sure you have the development environment set up with .NET Core SDK and a local web server.
 2. Clone this repository to your local machine.
 3. Navigate to the project directory using the terminal or command prompt.
 4. Run the `dotnet run` command to start the local web server.
-5. Open your web browser and access `http://localhost:5000` to play SlimeTAP.
+5. Open your web browser and access `http://localhost:<port>` to play SlimeTAP.
+
+> Note: Replace `<port>` with the specific port number where the web server is running on your local environment. The default port is usually 5000, but it may vary depending on your environment configuration.
+
+Make sure to provide users with the correct information about the port to use so that they can properly access the game on their local environments.
 
 ## System Requirements
 
