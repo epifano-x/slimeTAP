@@ -1,0 +1,63 @@
+html {
+    font-size: 14px;
+    color: #ffffff;
+  }
+  
+  @media (min-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+  
+
+  
+  html {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+  }
+  
+  body {
+    margin-top: 0%;
+    margin-bottom: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
+    background-image: url("../img/background.jpg");
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    color: #000000;
+    
+  }
+  
+  html::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.0); /* Ajuste a opacidade da máscara conforme necessário */
+    pointer-events: none;
+    backdrop-filter: blur(1px); /* Ajuste o valor do desfoque conforme necessário */
+    -webkit-backdrop-filter: blur(1px);
+  }
+
+  .div1 {
+    width: 30%;
+    height: 100vh; /* 100% da altura da viewport */
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .div2 {
+    width: 70%;
+    height: 100vh; /* 100% da altura da viewport */
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  

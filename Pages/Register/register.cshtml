@@ -1,0 +1,47 @@
+@page
+@model SlimeTAP.Pages.Register.register
+@{
+    ViewData["Title"] = "register";
+}
+@{
+    Layout = ""; // Pode ser vazio ou null
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SlimeTAP</title>
+    <link rel="stylesheet" href="~/css/register.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <div class="div1">
+    <div class="abc">
+        <div class="image-container2">
+                <img src="~/img/text1.png" alt="Slime Image">
+            </div>
+    </div>
+    </div>
+    <div class="div2">
+        <div class="abc2">
+            <div class="text-box">
+                <input type="text" placeholder="Nome de usuário">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="text-box">
+                <input type="email" placeholder="E-mail">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div class="text-box">
+                <input type="password" placeholder="Senha">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div class="text-box">
+                <input type="password" placeholder="Confirmar senha">
+                <i class="fas fa-lock"></i>
+            </div>
+            <button class="register-button">Registrar</button>
+        </div>
+    </div>
+    
+    <script src="~/js/register.js" asp-append-version="true"></script>
+</body>
