@@ -33,8 +33,24 @@
       "PackagePath": "staticwebassets\\img\\background.jpg"
     },
     {
+      "Id": "C:\\Users\\bruno\\Documents\\GitHub\\slimeTAP\\wwwroot\\img\\diamante.png",
+      "PackagePath": "staticwebassets\\img\\diamante.png"
+    },
+    {
+      "Id": "C:\\Users\\bruno\\Documents\\GitHub\\slimeTAP\\wwwroot\\img\\gema.png",
+      "PackagePath": "staticwebassets\\img\\gema.png"
+    },
+    {
+      "Id": "C:\\Users\\bruno\\Documents\\GitHub\\slimeTAP\\wwwroot\\img\\inimigo.png",
+      "PackagePath": "staticwebassets\\img\\inimigo.png"
+    },
+    {
       "Id": "C:\\Users\\bruno\\Documents\\GitHub\\slimeTAP\\wwwroot\\img\\loading.gif",
       "PackagePath": "staticwebassets\\img\\loading.gif"
+    },
+    {
+      "Id": "C:\\Users\\bruno\\Documents\\GitHub\\slimeTAP\\wwwroot\\img\\moeda.png",
+      "PackagePath": "staticwebassets\\img\\moeda.png"
     },
     {
       "Id": "C:\\Users\\bruno\\Documents\\GitHub\\slimeTAP\\wwwroot\\img\\registro.png",
