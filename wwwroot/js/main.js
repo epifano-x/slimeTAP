@@ -28,3 +28,32 @@ function mudarTela(numeroTela) {
     botaoSelecionado.classList.add('selected');
   }
   
+  function toggleMenu() {
+    var menu = document.querySelector('.container2 .menu');
+    menu.classList.toggle('menu-displayed');
+  }
+
+  
+  function zoomImage() {
+    var image = document.querySelector('.image-container img');
+    image.classList.add('zoom-animation');
+    setTimeout(function() {
+      image.classList.remove('zoom-animation');
+    }, 200);
+  }
+  
+  document.querySelector('.div2').onclick = function() {
+    zoomImage();
+  };
+
+
+  function bloquearSelecaoTexto() {
+    // Impede a ação padrão de seleção de texto no evento 'mousedown'
+    document.addEventListener('mousedown', function(event) {
+      event.preventDefault();
+    });
+  }
+  
+  bloquearSelecaoTexto()
+  
+  

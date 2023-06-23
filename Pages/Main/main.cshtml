@@ -12,9 +12,12 @@
     <title>@ViewData["Title"] - SlimeTAP</title>
     <link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
 
 </head>
 <body>
+  <div class="background2"></div>
+  <div class="stone-floor"></div>
   <div class="div1">
       <div class="container">
         <div class="barra-superior">
@@ -198,9 +201,28 @@
         <!-- Adicione mais telas se necessário -->
       </div>
     </div>
-  <div class="div2">
+  <div class="div2" onclick="zoomImage()">
     <!-- Conteúdo da segunda div -->
+     <div class="container2">
+    <div class="profile-icon" onclick="toggleMenu()">
+      <i class="fas fa-user-circle"></i>
+    </div>
+    <div class="menu">
+      <a class="menu-item" href="#">Configuração</a>
+      <a class="menu-item" asp-area="" asp-page="/Login/login">Log Out</a>
+    </div>
+    
+
+    <div class="image-container">
+      <img src="~/img/slime1.png" alt="Slime Image" >
+    </div>
+    
   </div>
+  
+
+
+  <!-- Seus outros elementos HTML aqui -->
+</div>
 
   <script src="~/js/main.js" asp-append-version="true"></script>
 </body>
