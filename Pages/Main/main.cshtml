@@ -1,5 +1,7 @@
 @page
 @model SlimeTAP.Pages.Main.main
+
+
 @{
     ViewData["Title"] = "main";
 }
@@ -214,7 +216,6 @@
       <a class="menu-item" asp-area="" asp-page="/Login/login">Log Out</a>
     </div>
 
-
     <div class="image-container4">
       <img src="~/img/moeda.png" alt="moedas" >
     </div>
@@ -230,13 +231,13 @@
             <img src="~/img/@slime.ImageFileName" alt="Slime Image" onclick="zoomImage(this)">
         </div>
     }
-    
+
   </div>
   
 
 
   <!-- Seus outros elementos HTML aqui -->
 </div>
-
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="~/js/main.js" asp-append-version="true"></script>
 </body>

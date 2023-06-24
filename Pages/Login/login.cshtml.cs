@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SlimeTAP.RazorPages.Data;
+using Microsoft.AspNetCore.Http;
 
 namespace SlimeTAP.Pages.Login
 {
@@ -38,9 +39,15 @@ namespace SlimeTAP.Pages.Login
             // Verificar se as credenciais do usuário são válidas com base nos dados do banco de dados
             var user = _dbContext.Set<UsuarioModel>().FirstOrDefault(u => u.UsuarioNome == Usuario.UsuarioNome && u.Senha == Usuario.Senha);
 
-
             if (user != null)
             {
+                // Salvar o nome do usuário nos cookies
+                var cookieOptions = new CookieOptions
+                {
+                    Expires = DateTime.Now.AddDays(7) // Define a expiração do cookie (7 dias a partir de agora)
+                };
+                HttpContext.Response.Cookies.Append("UsuarioNome", Usuario.UsuarioNome, cookieOptions);
+
                 // Login bem-sucedido, redirecionar para outra página
                 return RedirectToPage("/Loading/Loading");
             }
@@ -51,24 +58,5 @@ namespace SlimeTAP.Pages.Login
                 return Page();
             }
         }
-
-
-        private bool IsValidUser(string username, string password)
-        {
-            // Implemente sua lógica de validação personalizada aqui
-            // Por exemplo, verifique os dados em um banco de dados ou use um serviço de autenticação
-            // Retorne true se o usuário for válido, caso contrário, retorne false
-
-            // Exemplo de validação básica
-            if (username == "admin" && password == "admin123")
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        
-
     }
 }
