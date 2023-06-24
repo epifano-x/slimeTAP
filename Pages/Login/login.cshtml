@@ -27,22 +27,28 @@
             <div class="image-container2">
                 <img src="~/img/text1.png" alt="Slime Image">
             </div>
-            <div class="text-box">
-                <input type="text" placeholder="Username">
-                <i class="fas fa-user"></i>
-            </div>
+            <form method="post">
+                <div class="text-box">
+                    <input type="text" placeholder="Username" asp-for="Usuario.UsuarioNome">
+                    <i class="fas fa-user"></i>
+                </div>
 
-            <div class="text-box">
-                <input type="password" placeholder="Password" id="password">
-                <i class="fas fa-eye-slash" id="togglePassword"></i>
-            </div>
+                <div class="text-box">
+                    <input type="password" placeholder="Password" id="password" asp-for="Usuario.Senha">
+                    <i class="fas fa-eye-slash" id="togglePassword"></i>
+                </div>
 
-            <div class="checkbox-container">
-                <input type="checkbox" id="rememberPassword">
-                <label for="rememberPassword">Lembrar senha</label>
-            </div>
-            <a class="play-button" asp-area="" asp-page="/Loading/loading">Entrar</a>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="rememberPassword">
+                    <label for="rememberPassword">Lembrar senha</label>
+                </div>
+                <!-- Botão Entrar --><div asp-validation-summary="All" class="text-danger"></div>
+                <button type="submit" class="play-button">Entrar</button>
+                
+
+            </form>
         </div>
+
     </div>
  
     <script src="~/js/login.js" asp-append-version="true"></script>
