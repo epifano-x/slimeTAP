@@ -48,11 +48,11 @@
           <div class="upgrade">
             <div class="icone"></div>
               <div class="conteudo">
-                <h3>Título do Upgrade</h3>
-                <p>Informações sobre o upgrade.</p>
-                <p>Nível atual: <span class="nivel">1</span></p>
+                <h3>SLIMES TOTAIS</h3>
+                <p>A cada upgrade voce ganha mais um slime.</p>
+                <p>Nível atual: <span class="quantidade">1</span></p>
               </div>
-            <button class="botao">$10</button>
+            <button class="botao" asp-page-handler="IncrementValue">10 xp</button>
           </div>
           <div class="upgrade">
             <div class="icone"></div>
@@ -202,8 +202,10 @@
       </div>
     </div>
   <div class="div2" onclick="zoomImage()">
+    
     <!-- Conteúdo da segunda div -->
      <div class="container2">
+    
     <div class="profile-icon" onclick="toggleMenu()">
       <i class="fas fa-user-circle"></i>
     </div>
@@ -211,11 +213,8 @@
       <a class="menu-item" href="#">Configuração</a>
       <a class="menu-item" asp-area="" asp-page="/Login/login">Log Out</a>
     </div>
-    
 
-    <div class="image-container">
-      <img src="~/img/slime1.png" alt="Slime Image" >
-    </div>
+
     <div class="image-container4">
       <img src="~/img/moeda.png" alt="moedas" >
     </div>
@@ -225,8 +224,18 @@
     <div class="image-container6">
       <img src="~/img/gema.png" alt="moedas" >
     </div>
-          
+@foreach (var slime in Model.Slimes)
+{
+    <div class="slime slime-@slime.X" style="left: @(slime.X)%; margin-top: 18%; transform: scale(0.22); position: absolute">
+        <img src="~/img/@slime.ImageFileName" alt="Slime Image" onclick="zoomImage(this)">
+    </div>
+}
+
+
+  
       
+
+
   </div>
   
 

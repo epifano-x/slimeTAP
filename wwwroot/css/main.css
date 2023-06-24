@@ -291,6 +291,12 @@ html {
   }
 
 
+  .zoom-animation {
+    transform: scale(1.18);
+    transition: transform 0.1s;
+}
+
+
   .background2 {
     position: fixed;
     top: 0;
@@ -347,4 +353,27 @@ html {
   .image-container6 img {
     width: 100%;
     height: 100%;
+  }
+
+  .moeda {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-image: url('../img/moeda.png');
+    background-size: cover;
+    animation: flutuar 1s ease-in-out, cair 1s linear;
+    pointer-events: none;
+  }
+
+  @keyframes flutuar {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    25% { transform: translate(-50%, -40%) rotate(180deg); }
+    50% { transform: translate(-50%, -50%) rotate(360deg); }
+    75% { transform: translate(-50%, -60%) rotate(540deg); }
+    100% { transform: translate(-50%, -50%) rotate(720deg); }
+  }
+
+  @keyframes cair {
+    0% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(calc(100% + 20px)); }
   }

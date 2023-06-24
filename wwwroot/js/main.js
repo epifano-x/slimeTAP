@@ -34,17 +34,23 @@ function mudarTela(numeroTela) {
   }
 
   
-  function zoomImage() {
-    var image = document.querySelector('.image-container img');
-    image.classList.add('zoom-animation');
+  function zoomImage(element) {
+    element.classList.add('zoom-animation');
+
     setTimeout(function() {
-      image.classList.remove('zoom-animation');
+        element.classList.remove('zoom-animation');
     }, 200);
-  }
+}
+
+
+document.querySelector('.div2').onclick = function() {
+  var slimeImages = document.querySelectorAll('.slime img');
   
-  document.querySelector('.div2').onclick = function() {
-    zoomImage();
-  };
+  slimeImages.forEach(function(image) {
+    zoomImage(image);
+  });
+};
+
 
 
   function bloquearSelecaoTexto() {
@@ -56,4 +62,40 @@ function mudarTela(numeroTela) {
   
   bloquearSelecaoTexto()
   
-  
+
+  var div2 = document.querySelector('.div2');
+
+  div2.addEventListener('click', function(event) {
+    var x = event.clientX;
+    var y = event.clientY;
+
+    var moeda = document.createElement('div');
+    moeda.classList.add('moeda');
+    moeda.style.left = x + 'px';
+    moeda.style.top = y + 'px';
+
+    div2.appendChild(moeda);
+
+    setTimeout(function() {
+      div2.removeChild(moeda);
+    }, 1000);
+  });
+
+  $(document).ready(function () {
+    // Manipulador de evento para o clique no botão
+    $("#myButton").click(function () {
+        // Chamada AJAX para o manipulador de eventos no servidor
+        $.ajax({
+            type: "POST",
+            url: "/main",
+            data: { handler: "IncrementUpgradeValue" },
+            success: function (response) {
+                // Atualiza o valor exibido na página
+                $("#upgradeValue").text(response.upgradeValue);
+            },
+            error: function () {
+                alert("Erro ao incrementar o valor!");
+            }
+        });
+    });
+});
