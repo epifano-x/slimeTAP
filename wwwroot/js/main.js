@@ -87,7 +87,7 @@ document.querySelector('.div2').onclick = function() {
         // Chamada AJAX para o manipulador de eventos no servidor
         $.ajax({
             type: "POST",
-            url: "/main",
+            url: "/Main",
             data: { handler: "IncrementUpgradeValue" },
             success: function (response) {
                 // Atualiza o valor exibido na página

@@ -11,7 +11,6 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SlimeTAP</title>
     <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -19,7 +18,7 @@
     <div class="image-container1">
         <img src="~/img/registro.png" alt="Slime Image">
         <div class="text"><p>Não possui uma conta? Registre-se agora mesmo.</p></div>
- <a class="play-button1" asp-area="" asp-page="/Register/register">Registrar</a>
+ <a class="play-button1" asp-area="" asp-page="/Register/Register">Registrar</a>
         
     </div>
     <div class="div1">
@@ -42,7 +41,8 @@
                     <input type="checkbox" id="rememberPassword">
                     <label for="rememberPassword">Lembrar senha</label>
                 </div>
-                <!-- Botão Entrar --><div asp-validation-summary="All" class="text-danger"></div>
+                <!-- Botão Entrar -->
+                <div asp-validation-summary="All" class="text-danger"></div>
                 <button type="submit" class="play-button">Entrar</button>
                 
 

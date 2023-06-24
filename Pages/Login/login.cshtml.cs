@@ -17,11 +17,7 @@ namespace SlimeTAP.Pages.Login
     public class login : PageModel
     {
         private readonly ILogger<login> _logger;
-
-
-
         private readonly RazorPages.Data.AppDbContext _dbContext;
-
         public login(ILogger<login> logger, AppDbContext dbContext)
         {
             _logger = logger;

@@ -168,6 +168,15 @@ html {
     margin-left: 30%;
   }
 
+  .text-danger {
+    position: absolute;
+    margin-top: 0px;
+    left: -15%;
+    right: 0;
+    text-align: center;
+    color: rgb(255, 121, 121);
+  }
+
   .play-button {
     display: inline-block;
     padding: 10px 144px;
