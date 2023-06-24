@@ -28,7 +28,7 @@ public main(ILogger<main> logger)
 
 public void OnGet()
 {
-    UpgradeValue = 1; // Valor inicial
+    UpgradeValue = 19; // Valor inicial
     Slimes = GenerateSlimeData(UpgradeValue);
 
     var httpContext = HttpContext;
