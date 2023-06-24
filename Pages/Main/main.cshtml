@@ -224,18 +224,13 @@
     <div class="image-container6">
       <img src="~/img/gema.png" alt="moedas" >
     </div>
-@foreach (var slime in Model.Slimes)
-{
-    <div class="slime slime-@slime.X" style="left: @(slime.X)%; margin-top: 18%; transform: scale(0.22); position: absolute">
-        <img src="~/img/@slime.ImageFileName" alt="Slime Image" onclick="zoomImage(this)">
-    </div>
-}
-
-
-  
-      
-
-
+    @foreach (var slime in Model?.Slimes ?? new List<main.SlimeData>())
+    {
+        <div class="slime slime-@slime.X" style="left: @(slime.X)%; margin-top: 18%; transform: scale(0.22); position: absolute">
+            <img src="~/img/@slime.ImageFileName" alt="Slime Image" onclick="zoomImage(this)">
+        </div>
+    }
+    
   </div>
   
 

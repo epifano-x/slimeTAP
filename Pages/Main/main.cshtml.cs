@@ -19,14 +19,27 @@ namespace SlimeTAP.Pages.Main
 
         
         
-        public List<SlimeData> Slimes { get; set; }
-
+        public List<SlimeData>? Slimes { get; set; }
+        
         public int UpgradeValue { get; set; }
 
         public void OnGet()
         {
             UpgradeValue = 1; // Valor inicial
             Slimes = GenerateSlimeData(UpgradeValue);
+            if (Slimes != null)
+            {
+                // Faça algo com a propriedade Slimes, como acessar seus elementos
+                foreach (var slime in Slimes)
+                {
+                    // Faça algo com o slime
+                }
+                
+            }
+            else
+            {
+                // Lida com a situação em que a propriedade Slimes é nula
+            }
         }
 
         public IActionResult OnPostIncrementValue()
@@ -43,8 +56,9 @@ namespace SlimeTAP.Pages.Main
         {
             public int X { get; set; }
             public int Y { get; set; }
-            public string ImageFileName { get; set; }
+            public string? ImageFileName { get; set; }
             public int ZIndex { get; set; }
+            
         }
 
 

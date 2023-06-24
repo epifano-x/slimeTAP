@@ -26,7 +26,9 @@ namespace SlimeTAP.Pages.Login
         {
             _logger = logger;
             _dbContext = dbContext;
+            Usuario = new UsuarioModel();
         }
+        
 
         [BindProperty]
         public UsuarioModel Usuario { get; set; }
