@@ -18660,6 +18660,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\bruno\\Documents\\GitHub\\slimeTAP\\Pages\\Rank\\rank.cshtml",
+      "TargetPath": "Pages\\Rank\\rank.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\bruno\\Documents\\GitHub\\slimeTAP\\Pages\\Index.cshtml",
       "TargetPath": "Pages\\Index.cshtml",
       "FileKind": "mvc"

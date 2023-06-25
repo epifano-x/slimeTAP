@@ -71,6 +71,7 @@ html {
     background-size: cover;
     background-position: center;
     color: #ffffff;
+    overflow: hidden;
     
   }
   
