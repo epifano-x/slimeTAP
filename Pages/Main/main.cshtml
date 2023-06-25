@@ -16,6 +16,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
 
+
+    <script>
+        function logout() {
+            document.cookie = "UsuarioNome=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            window.location.href = '/Login/login';
+        }
+    </script>
 </head>
 <body>
   <div class="background2"></div>
@@ -44,7 +51,7 @@
         <div class="tela">
           <div class="informacao-tela">
               <h1>XP</h1>
-              <h2><p>'<b>  10</b> '    Pontos disponiveis para gastar.</p></h2>
+              <h2><p>'<b>  @Model.Level</b> '    Pontos disponiveis para gastar.</p></h2>
               <p><i>A cada nivel que voce passa voce ganha um de credito para gastar aqui.</i></p>
             </div>
           <div class="upgrade">
@@ -52,66 +59,13 @@
               <div class="conteudo">
                 <h3>SLIMES TOTAIS</h3>
                 <p>A cada upgrade voce ganha mais um slime.</p>
-                <p>Nível atual: <span class="quantidade">1</span></p>
+                <p>Nível atual: <span class="quantidade">@Model.UpgradeValue</span></p>
               </div>
-            <button class="botao" asp-page-handler="IncrementValue">10 xp</button>
-          </div>
-          <div class="upgrade">
-            <div class="icone"></div>
-              <div class="conteudo">
-                <h3>Título do Upgrade</h3>
-                <p>Informações sobre o upgrade.</p>
-                <p>Nível atual: <span class="nivel">1</span></p>
-              </div>
-            <button class="botao">$10</button>
-          </div>
-          <div class="upgrade">
-            <div class="icone"></div>
-              <div class="conteudo">
-                <h3>Título do Upgrade</h3>
-                <p>Informações sobre o upgrade.</p>
-                <p>Nível atual: <span class="nivel">1</span></p>
-              </div>
-            <button class="botao">$10</button>
-          </div>
-          <div class="upgrade">
-            <div class="icone"></div>
-              <div class="conteudo">
-                <h3>Título do Upgrade</h3>
-                <p>Informações sobre o upgrade.</p>
-                <p>Nível atual: <span class="nivel">1</span></p>
-              </div>
-            <button class="botao">$10</button>
-          </div>
-          <div class="upgrade">
-            <div class="icone"></div>
-              <div class="conteudo">
-                <h3>Título do Upgrade</h3>
-                <p>Informações sobre o upgrade.</p>
-                <p>Nível atual: <span class="nivel">1</span></p>
-              </div>
-            <button class="botao">$10</button>
-          </div>
-          <div class="upgrade">
-            <div class="icone"></div>
-              <div class="conteudo">
-                <h3>Título do Upgrade</h3>
-                <p>Informações sobre o upgrade.</p>
-                <p>Nível atual: <span class="nivel">1</span></p>
-              </div>
-            <button class="botao">$10</button>
-          </div>
-          <div class="upgrade">
-            <div class="icone"></div>
-              <div class="conteudo">
-                <h3>Título do Upgrade</h3>
-                <p>Informações sobre o upgrade.</p>
-                <p>Nível atual: <span class="nivel">1</span></p>
-              </div>
-            <button class="botao">$10</button>
-          </div>
-          
-
+              <form asp-page-handler="IncrementSlime">
+                <button type="submit" class="botao">10 xp</button>
+              </form>
+            </div>
+    
           <!-- Adicione mais upgrades aqui -->
         </div>
         <div class="tela">
@@ -203,17 +157,34 @@
         <!-- Adicione mais telas se necessário -->
       </div>
     </div>
-  <div class="div2" onclick="zoomImage()">
+  <div class="div2" asp-page-handler="IncrementMoeda">
     
     <!-- Conteúdo da segunda div -->
-     <div class="container2">
-    
+    <div class="container2">
+
+      <div class="textprofile">
+        <p>@Model.UsuarioNome <br> Level:@Model.Level</p>  
+      </div> 
+      <div class="valores">
+        <div class="moedas">
+          <p>@Model.Moeda</p>  
+        </div>
+        <div class="diamantes">
+          <p>@Model.Diamante</p>  
+        </div>
+        <div class="gemas">
+          <p>@Model.Gema</p>  
+        </div>
+      </div> 
+
     <div class="profile-icon" onclick="toggleMenu()">
+      
       <i class="fas fa-user-circle"></i>
+      
     </div>
     <div class="menu">
-      <a class="menu-item" href="#">Configuração</a>
-      <a class="menu-item" asp-area="" asp-page="/Login/login">Log Out</a>
+        <a class="menu-item" href="#">Configuração</a>
+        <a class="menu-item" href="#" onclick="logout()">Log Out</a>
     </div>
 
     <div class="image-container4">
@@ -233,11 +204,15 @@
     }
 
   </div>
-  
+
 
 
   <!-- Seus outros elementos HTML aqui -->
 </div>
+
+
+
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="~/js/main.js" asp-append-version="true"></script>
 </body>

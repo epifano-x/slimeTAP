@@ -17,7 +17,7 @@ namespace SlimeTAP
             services.AddDbContext<AppDbContext>();
             services.AddDistributedMemoryCache();
             services.AddHttpContextAccessor();
-
+            
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddSession(options =>

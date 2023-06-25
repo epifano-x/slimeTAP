@@ -8,6 +8,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
+using slimeTAP.Models;
+using SlimeTAP.RazorPages.Data;
 
 namespace SlimeTAP.Pages.Main
 {
@@ -15,37 +17,77 @@ namespace SlimeTAP.Pages.Main
     {
         private readonly ILogger<main> _logger;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly RazorPages.Data.AppDbContext _dbContext;
+        public main(ILogger<main> logger, AppDbContext dbContext)
+        {
+            _logger = logger;
+            _dbContext = dbContext;
+            Usuario = new UsuarioModel();
+        }
 
-public main(ILogger<main> logger)
-{
-    _logger = logger;
-}
-
-
+        public UsuarioModel Usuario { get; set; }
         public List<SlimeData>? Slimes { get; set; }
         public int UpgradeValue { get; set; }
+        public int Level { get; set; }
+        public int Moeda { get; set; }
+        public int Diamante { get; set; }
+        public int Gema { get; set; }
+
         public string UsuarioNome { get; set; } // Propriedade para armazenar o nome do usuário
 
-public void OnGet()
-{
-    UpgradeValue = 19; // Valor inicial
-    Slimes = GenerateSlimeData(UpgradeValue);
+        public UsuarioModel? existingUser { get; set; }
 
-    var httpContext = HttpContext;
-    // Agora você pode acessar a propriedade HttpContext para obter o acesso à sessão, por exemplo:
-    var nomeUsuario = httpContext.Session.GetString("UsuarioNome");
-    // Resto do código...
-}
-
-        public IActionResult OnPostIncrementValue()
+        public void OnGet()
         {
-            UpgradeValue++; // Incrementa o valor em 1
+            
 
-            // Atualiza a propriedade Slimes, se necessário
-            //Slimes = GenerateSlimeData(UpgradeValue);
-
-            return Page();
+            var httpContext = HttpContext;
+            // Agora você pode acessar a propriedade HttpContext para obter o acesso à sessão, por exemplo:
+            string usuarioNomeCookie = Request.Cookies["UsuarioNome"];
+            // Resto do código...
+            if (!string.IsNullOrEmpty(usuarioNomeCookie))
+        {
+            UsuarioNome = usuarioNomeCookie;
+            existingUser = _dbContext.Set<UsuarioModel>().FirstOrDefault(u => u.UsuarioNome == usuarioNomeCookie);
+            UpgradeValue = Convert.ToInt32(existingUser.Upgrade1);
+            Level = Convert.ToInt32(existingUser.Level);
+            Moeda = Convert.ToInt32(existingUser.Moeda);
+            Diamante = Convert.ToInt32(existingUser.Diamante);
+            Gema = Convert.ToInt32(existingUser.Gema);
+            Slimes = GenerateSlimeData(UpgradeValue);
         }
+        }
+
+
+        public IActionResult OnPostIncrementSlime()
+        {
+            var httpContext = HttpContext;
+            // Agora você pode acessar a propriedade HttpContext para obter o acesso à sessão, por exemplo:
+            string usuarioNomeCookie = Request.Cookies["UsuarioNome"];
+            Usuario = _dbContext.Set<UsuarioModel>().FirstOrDefault(u => u.UsuarioNome == usuarioNomeCookie);
+            if (Usuario != null)
+            {
+                if(Usuario.Level > 10){
+                    Usuario.Level -= 10;
+                    Usuario.Upgrade1 += 1;
+                    _dbContext.SaveChanges(); // Salva as alterações no banco de dados
+
+                    // Redirecionar para a página principal sem adicionar o handler à URL
+                    return RedirectToPage("/Main/main");
+                }else{
+                    return RedirectToPage("/Main/main");
+                    
+                }
+
+            }
+
+            // Restante da lógica...
+
+            // Em caso de erro ou algum outro resultado, você pode retornar uma resposta adequada
+            return BadRequest();
+        }
+
+
 
         public class SlimeData
         {

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6ZFzKyQvbw0sGSP/BvtOp50FCi4s7EerS6hJlQ/rhIKOWJPJdMQOEkTqWY4flhNP6jKn6KYL8SFlpv7mowUG0g==",
+  "dgSpecHash": "kSEo+bMQznt1mQMdI3x+cxdPI4Mb58c7eW/btkd5he05rg4eK5l3M63kp8X2AdhqHqguzjtlfO8TJHys0ogR+w==",
   "success": true,
-  "projectFilePath": "D:\\slimeTAP-main\\SlimeTAP.csproj",
+  "projectFilePath": "C:\\Users\\bruno\\Documents\\GitHub\\slimeTAP\\SlimeTAP.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bruno\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\bruno\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",

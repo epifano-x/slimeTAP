@@ -8584,11 +8584,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\slimeTAP-main\\SlimeTAP.csproj",
+      "projectUniqueName": "c:\\Users\\bruno\\Documents\\GitHub\\slimeTAP\\SlimeTAP.csproj",
       "projectName": "SlimeTAP",
-      "projectPath": "d:\\slimeTAP-main\\SlimeTAP.csproj",
+      "projectPath": "c:\\Users\\bruno\\Documents\\GitHub\\slimeTAP\\SlimeTAP.csproj",
       "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
-      "outputPath": "d:\\slimeTAP-main\\obj\\",
+      "outputPath": "c:\\Users\\bruno\\Documents\\GitHub\\slimeTAP\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

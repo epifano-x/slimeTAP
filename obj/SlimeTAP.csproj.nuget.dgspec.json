@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\slimeTAP-main\\SlimeTAP.csproj": {}
+    "C:\\Users\\bruno\\Documents\\GitHub\\slimeTAP\\SlimeTAP.csproj": {}
   },
   "projects": {
-    "D:\\slimeTAP-main\\SlimeTAP.csproj": {
+    "C:\\Users\\bruno\\Documents\\GitHub\\slimeTAP\\SlimeTAP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\slimeTAP-main\\SlimeTAP.csproj",
+        "projectUniqueName": "C:\\Users\\bruno\\Documents\\GitHub\\slimeTAP\\SlimeTAP.csproj",
         "projectName": "SlimeTAP",
-        "projectPath": "D:\\slimeTAP-main\\SlimeTAP.csproj",
+        "projectPath": "C:\\Users\\bruno\\Documents\\GitHub\\slimeTAP\\SlimeTAP.csproj",
         "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
-        "outputPath": "D:\\slimeTAP-main\\obj\\",
+        "outputPath": "C:\\Users\\bruno\\Documents\\GitHub\\slimeTAP\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

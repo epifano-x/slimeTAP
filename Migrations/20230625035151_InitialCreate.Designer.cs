@@ -11,7 +11,7 @@ using SlimeTAP.RazorPages.Data;
 namespace SlimeTAP.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230624032550_InitialCreate")]
+    [Migration("20230625035151_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -35,7 +35,7 @@ namespace SlimeTAP.Migrations
                     b.Property<int?>("Gema")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("Level")
+                    b.Property<int>("Level")
                         .HasColumnType("INTEGER");
 
                     b.Property<float?>("Moeda")
@@ -45,16 +45,48 @@ namespace SlimeTAP.Migrations
                         .HasColumnType("REAL");
 
                     b.Property<string>("Senha")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("Upgrade1")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("Upgrade10")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("Upgrade11")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int?>("Upgrade2")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("Upgrade3")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("Upgrade4")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("Upgrade5")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("Upgrade6")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("Upgrade7")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("Upgrade8")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("Upgrade9")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("UsuarioNome")
+                        .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("Xp")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
