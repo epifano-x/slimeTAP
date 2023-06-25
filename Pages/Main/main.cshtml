@@ -6,7 +6,7 @@
     ViewData["Title"] = "main";
 }
 @{
-    Layout = ""; // Pode ser vazio ou null
+    Layout = null; // Pode ser vazio ou null
 }
 <head>
     <meta charset="utf-8" />
@@ -101,42 +101,30 @@
               <h2><p>'<b>  @Model.Moeda</b> '    Moedas disponiveis para gastar.</p></h2>
               <p><i>A cada clike na tela voce ganha @Model.existingUser.Upgrade2 de moeda's para gastar aqui.</i></p>
             </div>
-          <div class="upgrade">
-            <div class="icone"></div>
+
+            <div class="upgrade">
+              <div class="icone"></div>
               <div class="conteudo">
-                <h3>Título do Upgrade</h3>
-                <p>Informações sobre o upgrade.</p>
-                <p>Nível atual: <span class="nivel">1</span></p>
+                <h3>DEDO DE MIDAS</h3>
+                <p>A cada nivel voce ganha +1% de chance de dobra os gold no seu click</p>
+                <p>Nivel do multiplicador atual: <span class="quantidade">@Model.existingUser.Upgrade4 %</span></p>
               </div>
-            <button class="botao">$10</button>
-          </div>
-          <div class="upgrade">
-            <div class="icone"></div>
+              <form asp-page-handler="IncrementDobroMoedas">
+                <button type="submit" class="botao">@Model.Custo4 G</button>
+              </form>
+            </div>
+
+            <div class="upgrade">
+              <div class="icone"></div>
               <div class="conteudo">
-                <h3>Título do Upgrade</h3>
-                <p>Informações sobre o upgrade.</p>
-                <p>Nível atual: <span class="nivel">1</span></p>
+                <h3>SABIO SABIDO</h3>
+                <p>A cada nivel voce ganha +1% de chance de dobra o XP no seu click</p>
+                <p>Nivel do multiplicador atual: <span class="quantidade">@Model.existingUser.Upgrade5 %</span></p>
               </div>
-            <button class="botao">$10</button>
-          </div>
-          <div class="upgrade">
-            <div class="icone"></div>
-              <div class="conteudo">
-                <h3>Título do Upgrade</h3>
-                <p>Informações sobre o upgrade.</p>
-                <p>Nível atual: <span class="nivel">1</span></p>
-              </div>
-            <button class="botao">$10</button>
-          </div>
-          <div class="upgrade">
-            <div class="icone"></div>
-              <div class="conteudo">
-                <h3>Título do Upgrade</h3>
-                <p>Informações sobre o upgrade.</p>
-                <p>Nível atual: <span class="nivel">1</span></p>
-              </div>
-            <button class="botao">$10</button>
-          </div>
+              <form asp-page-handler="IncrementDobroXp">
+                <button type="submit" class="botao">@Model.Custo5 G</button>
+              </form>
+            </div>
         </div>
         <div class="tela">
           <div class="informacao-tela">
@@ -145,34 +133,17 @@
               <p><i>A cada level voce ganha 2 diamantes para gastar aqui.</i></p>
             </div>
           <!-- Conteúdo da terceira tela -->
-          <div class="upgrade">
-            <div class="icone"></div>
+            <div class="upgrade">
+              <div class="icone"></div>
               <div class="conteudo">
-                <h3>Título do Upgrade</h3>
-                <p>Informações sobre o upgrade.</p>
-                <p>Nível atual: <span class="nivel">1</span></p>
+                <h3>QUEBRANDO A BANCA</h3>
+                <p>A cada nivel voce ganha 0.1 de multiplicador nos seus ganhos de gema no wipe.</p>
+                <p>Nivel do multiplicador atual: <span class="quantidade">@Model.existingUser.Upgrade6</span></p>
               </div>
-            <button class="botao">$10</button>
-          </div>
-          <div class="upgrade">
-            <div class="icone"></div>
-              <div class="conteudo">
-                <h3>Título do Upgrade</h3>
-                <p>Informações sobre o upgrade.</p>
-                <p>Nível atual: <span class="nivel">1</span></p>
-              </div>
-            <button class="botao">$10</button>
-          </div>
-          <div class="upgrade">
-            <div class="icone"></div>
-              <div class="conteudo">
-                <h3>Título do Upgrade</h3>
-                <p>Informações sobre o upgrade.</p>
-                <p>Nível atual: <span class="nivel">1</span></p>
-              </div>
-              
-            <button class="botao">$10</button>
-          </div>
+              <form asp-page-handler="GemaMultiplicador">
+                <button type="submit" class="botao">@Model.Custo6 D</button>
+              </form>
+            </div>
         </div>
         <div class="tela">
           <!-- Conteúdo da terceira tela -->

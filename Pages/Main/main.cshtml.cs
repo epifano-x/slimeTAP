@@ -36,13 +36,18 @@ namespace SlimeTAP.Pages.Main
         public int Custo { get; set; }
         public int Custo2 { get; set; }
         public int Custo3 { get; set; }
-
+        public int Custo4 { get; set; }
+        public int Custo5 { get; set; }
+        public int Custo6 { get; set; }
         public float WipeValor { get; set; }
         public int Custo10 { get; set; }
         public int Custo11 { get; set; }
         public int Multiplicador { get; set; }
         public UsuarioModel? existingUser { get; set; }
         public int Nivel { get; set; }
+        public int LevelAtual { get; set; }
+        public int MoedaAtual { get; set; }
+        public int XpAtual { get; set; }
         public void OnGet()
         {
             
@@ -52,27 +57,38 @@ namespace SlimeTAP.Pages.Main
             string usuarioNomeCookie = Request.Cookies["UsuarioNome"];
             // Resto do código...
             if (!string.IsNullOrEmpty(usuarioNomeCookie))
-        {
-            UsuarioNome = usuarioNomeCookie;
-            existingUser = _dbContext.Set<UsuarioModel>().FirstOrDefault(u => u.UsuarioNome == usuarioNomeCookie);
-            UpgradeValue = Convert.ToInt32(existingUser.Upgrade1);
-            Level = Convert.ToInt32(existingUser.Level);
-            Moeda = Convert.ToInt32(existingUser.Moeda);
-            Diamante = Convert.ToInt32(existingUser.Diamante);
-            Gema = Convert.ToInt32(existingUser.Gema);
-            Slimes = GenerateSlimeData(UpgradeValue);
-            
-            Multiplicador = Convert.ToInt32(existingUser.Upgrade2);
-            Custo = UpgradeValue*10;
-            Custo2 = Convert.ToInt32(existingUser.Upgrade2)*2;
-            Custo3 = Convert.ToInt32(existingUser.Upgrade3)*2;
-            Custo10 = Convert.ToInt32(existingUser.Upgrade10)*2;
-            Custo11 = Convert.ToInt32(existingUser.Upgrade11)*2;
-            WipeValor = (float)(Convert.ToInt32(existingUser.Xp) * 0.1) + (float)(Convert.ToInt32(existingUser.MoedaTotal) * 0.001);
+            {
+                UsuarioNome = usuarioNomeCookie;
+                existingUser = _dbContext.Set<UsuarioModel>().FirstOrDefault(u => u.UsuarioNome == usuarioNomeCookie);
+                UpgradeValue = Convert.ToInt32(existingUser.Upgrade1);
+                Level = Convert.ToInt32(existingUser.Level);
+                Moeda = Convert.ToInt32(existingUser.Moeda);
+                Diamante = Convert.ToInt32(existingUser.Diamante);
+                Gema = Convert.ToInt32(existingUser.Gema);
+                Slimes = GenerateSlimeData(UpgradeValue);
+                
+                Multiplicador = Convert.ToInt32(existingUser.Upgrade2);
+                Custo = UpgradeValue*10;
+                Custo2 = Convert.ToInt32(existingUser.Upgrade2)*2;
+                Custo3 = Convert.ToInt32(existingUser.Upgrade3)*3;
+                Custo4 = Convert.ToInt32(existingUser.Upgrade4)*300;
+                Custo5 = Convert.ToInt32(existingUser.Upgrade5)*480;
+                Custo6 = Convert.ToInt32(existingUser.Upgrade6)*76;
 
-            WipeValor = Convert.ToInt32(WipeValor);
+
+
+
+
+                Custo10 = Convert.ToInt32(existingUser.Upgrade10)*2;
+                Custo11 = Convert.ToInt32(existingUser.Upgrade11)*2;
+                WipeValor = (float)(Convert.ToInt32(existingUser.Xp) * 0.1) + (float)(Convert.ToInt32(existingUser.MoedaTotal) * 0.001);
+
+                WipeValor = Convert.ToInt32(WipeValor);
+
+            }
         }
-        }
+
+ 
 
 
         public IActionResult OnPostIncrementSlime()
@@ -188,6 +204,98 @@ namespace SlimeTAP.Pages.Main
             return BadRequest();
         }  
 
+        public IActionResult OnPostIncrementDobroMoedas()
+        {
+            var httpContext = HttpContext;
+            // Agora você pode acessar a propriedade HttpContext para obter o acesso à sessão, por exemplo:
+            string usuarioNomeCookie = Request.Cookies["UsuarioNome"];
+            Usuario = _dbContext.Set<UsuarioModel>().FirstOrDefault(u => u.UsuarioNome == usuarioNomeCookie);
+            if (Usuario != null)
+            {
+                
+                if(Usuario.Moeda > 1){
+                    
+                    Custo4 = Convert.ToInt32(Usuario.Upgrade4)*2;
+                    Usuario.Moeda -= Custo4;
+                    
+                    if(Usuario.Moeda >=0 ){
+                        if(Usuario.Upgrade4<100){
+                            Usuario.Upgrade4 += 1;
+                        _dbContext.SaveChanges();
+                        }
+                        return RedirectToPage("/Main/main");
+                    }else{
+                        return RedirectToPage("/Main/main");
+                    }
+                    return RedirectToPage("/Main/main");
+                }else{
+                    return RedirectToPage("/Main/main");
+                }
+            }
+            return BadRequest();
+        }  
+
+        public IActionResult OnPostIncrementDobroXp()
+        {
+            var httpContext = HttpContext;
+            // Agora você pode acessar a propriedade HttpContext para obter o acesso à sessão, por exemplo:
+            string usuarioNomeCookie = Request.Cookies["UsuarioNome"];
+            Usuario = _dbContext.Set<UsuarioModel>().FirstOrDefault(u => u.UsuarioNome == usuarioNomeCookie);
+            if (Usuario != null)
+            {
+                
+                if(Usuario.Moeda > 1){
+                    
+                    Custo5 = Convert.ToInt32(Usuario.Upgrade5)*2;
+                    Usuario.Moeda -= Custo5;
+                    
+                    if(Usuario.Moeda >=0 ){
+                        if(Usuario.Upgrade5<100){
+                            Usuario.Upgrade5 += 1;
+                        _dbContext.SaveChanges();
+                        }
+                        return RedirectToPage("/Main/main");
+                    }else{
+                        return RedirectToPage("/Main/main");
+                    }
+                    return RedirectToPage("/Main/main");
+                }else{
+                    return RedirectToPage("/Main/main");
+                }
+            }
+            return BadRequest();
+        }  
+
+        public IActionResult OnPostIncrementGemaMultiplicador()
+        {
+            var httpContext = HttpContext;
+            // Agora você pode acessar a propriedade HttpContext para obter o acesso à sessão, por exemplo:
+            string usuarioNomeCookie = Request.Cookies["UsuarioNome"];
+            Usuario = _dbContext.Set<UsuarioModel>().FirstOrDefault(u => u.UsuarioNome == usuarioNomeCookie);
+            if (Usuario != null)
+            {
+                
+                if(Usuario.Diamante > 1){
+                    
+                    Custo6 = Convert.ToInt32(Usuario.Upgrade6)*2;
+                    Usuario.Diamante -= Custo6;
+                    
+                    if(Usuario.Diamante >=0 ){
+                        if(Usuario.Upgrade6>0){
+                            Usuario.Upgrade6 += 1;
+                        _dbContext.SaveChanges();
+                        }
+                        return RedirectToPage("/Main/main");
+                    }else{
+                        return RedirectToPage("/Main/main");
+                    }
+                    return RedirectToPage("/Main/main");
+                }else{
+                    return RedirectToPage("/Main/main");
+                }
+            }
+            return BadRequest();
+        }  
         public IActionResult OnPostIncrementMultiplicadorXpGema()
         {
             var httpContext = HttpContext;
@@ -226,19 +334,50 @@ namespace SlimeTAP.Pages.Main
             Usuario = _dbContext.Set<UsuarioModel>().FirstOrDefault(u => u.UsuarioNome == usuarioNomeCookie);
             if (Usuario != null)
             {
-                
+                Random random = new Random();
                 Usuario.Nivel += Convert.ToInt32(Usuario.Upgrade11)+(1*(Convert.ToInt32(Usuario.Upgrade3)));
-                if(Usuario.Nivel>=100){
-                    Usuario.Level++;
-                    Usuario.Xp++;
-                    Usuario.Diamante += 2;
-                    Usuario.Nivel = 0;
+                if(Usuario.Nivel>=100 && Usuario.Nivel<=200){
+                    if (random.Next(0, 100) < Usuario.Upgrade5){
+                        Usuario.Level++;
+                        Usuario.Xp+=2;
+                        Usuario.Diamante += 4;
+                        Usuario.Nivel -= 100;
+                    }else{
+                        Usuario.Level++;
+                        Usuario.Xp++;
+                        Usuario.Diamante += 2;
+                        Usuario.Nivel -= 100; 
+                    } 
+                }else if(Usuario.Nivel>=200){
+                    if (random.Next(0, 100) < Usuario.Upgrade5){
+                        Usuario.Level+=2;
+                        Usuario.Xp+=4;
+                        Usuario.Diamante += 8;
+                        Usuario.Nivel -= 200;
+                    }else{
+                        Usuario.Level+=2;
+                        Usuario.Xp+=2;
+                        Usuario.Diamante += 4;
+                        Usuario.Nivel -= 200;
+                    } 
                 }
                 if(Usuario.Upgrade1 == 1){
-                    Usuario.Moeda += (Convert.ToInt32(Usuario.Upgrade2)*1);
-                    Usuario.MoedaTotal += (Convert.ToInt32(Usuario.Upgrade2)*1);
-                    _dbContext.SaveChanges(); // Salva as alterações no banco de dados    
-                    return RedirectToPage("/Main/main");
+                    if (random.Next(0, 100) < Usuario.Upgrade4)
+                    {
+                        // Valor dobrado
+                        Usuario.Moeda += ((Convert.ToInt32(Usuario.Upgrade2)*1)*2);
+                        Usuario.MoedaTotal += ((Convert.ToInt32(Usuario.Upgrade2)*1)*2);
+                        _dbContext.SaveChanges(); // Salva as alterações no banco de dados    
+                        return RedirectToPage("/Main/main");
+
+                    }else{
+                                               // Valor dobrado
+                        Usuario.Moeda += (Convert.ToInt32(Usuario.Upgrade2)*1);
+                        Usuario.MoedaTotal += (Convert.ToInt32(Usuario.Upgrade2)*1);
+                        _dbContext.SaveChanges(); // Salva as alterações no banco de dados    
+                        return RedirectToPage("/Main/main"); 
+                    }
+                    
                 }else{
                     Usuario.Moeda += Convert.ToInt32(Usuario.Upgrade10)+(Convert.ToInt32(Usuario.Upgrade2)*1)*(10*(Convert.ToInt32(Usuario.Upgrade1)-1));
                     Usuario.MoedaTotal += Convert.ToInt32(Usuario.Upgrade10)+(Convert.ToInt32(Usuario.Upgrade2)*1)*(10*(Convert.ToInt32(Usuario.Upgrade1)-1));
@@ -348,14 +487,5 @@ namespace SlimeTAP.Pages.Main
             }
             return BadRequest();
         }
-
-
-
-
-
-
-
-
-
     }
 }
