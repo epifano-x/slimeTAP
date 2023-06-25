@@ -11,7 +11,7 @@ using SlimeTAP.RazorPages.Data;
 namespace SlimeTAP.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230625035151_InitialCreate")]
+    [Migration("20230625105843_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -41,8 +41,14 @@ namespace SlimeTAP.Migrations
                     b.Property<float?>("Moeda")
                         .HasColumnType("REAL");
 
+                    b.Property<float?>("MoedaTotal")
+                        .HasColumnType("REAL");
+
                     b.Property<float?>("Multiplicador")
                         .HasColumnType("REAL");
+
+                    b.Property<int>("Nivel")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Senha")
                         .IsRequired()

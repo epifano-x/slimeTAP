@@ -17,8 +17,10 @@ namespace slimeTAP.Models
 
         public string? Email { get; set; }
         public float? Moeda { get; set; }
+        public float? MoedaTotal { get; set; }
         public int Level { get; set; }
         public int Xp { get; set; }
+        public int Nivel { get; set; }
         public int? Diamante { get; set; }
         public int? Gema { get; set; }
         public float? Multiplicador { get; set; }
@@ -44,6 +46,7 @@ namespace slimeTAP.Models
             Diamante = 100;
             Gema = 100;
             Multiplicador = 1;
+            MoedaTotal = 0;
             Upgrade1 = 1;
             Upgrade2 = 1;
             Upgrade3 = 1;

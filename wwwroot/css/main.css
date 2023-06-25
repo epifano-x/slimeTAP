@@ -33,6 +33,7 @@ html {
     background-size: cover;
     background-position: center;
     color: #000000;
+    overflow: hidden;
     
   }
   
@@ -50,7 +51,7 @@ html {
   }
 
   .div1 {
-    z-index: 2;
+    z-index: 4;
     width: 30%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.652);
@@ -75,7 +76,8 @@ html {
     z-index: 2;
     width: 70%;
     height: 100%; /* 100% da altura da viewport */
-    background-color: rgba(0, 0, 0, 0.342);
+
+    margin-top: 3%;
   }
   .container {
     color: #ffffff;
@@ -311,6 +313,7 @@ html {
     width: 100%;
     height: 100%;
     z-index: -1;
+    background-color: rgba(0, 0, 0, 0.301);
   }
   
   .container3 {
@@ -329,6 +332,10 @@ html {
     box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.8); /* Ajuste os valores de deslocamento, propagação e opacidade conforme necessário */
   }
   
+  .ajuste{
+    margin-top: -4.5%;
+  }
+
   .image-container4 {
     width: 50px;
     height: 50px;
@@ -360,6 +367,7 @@ html {
   .image-container6 img {
     width: 100%;
     height: 100%;
+    margin-top: 0;
   }
 
   .moeda {
@@ -409,4 +417,33 @@ html {
     color: #721c24;
     padding: 10px;
     margin-bottom: 10px;
+}
+.formdiv2{
+  z-index: 2;
+  width: 100%;
+  height: 100%; /* 100% da altura da viewport */
+  background-color: rgba(0, 0, 0, 0.342);
+  margin-top: -2.1%;
+  margin-left: 0%;
+}
+
+.divbotaoClick{
+  z-index: 3;
+  width: 70%;
+  height: 100%;
+  top: -15%;
+  left: 2%;
+  align-items: center;
+  position: absolute;
+}
+.botaoClick{
+
+  background-color: #f8d7da00;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  top: 15%;
+  left: 40%;
+  align-items: center;
+  position: absolute;
 }

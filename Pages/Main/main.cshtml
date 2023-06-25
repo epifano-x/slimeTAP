@@ -54,15 +54,41 @@
               <h2><p>'<b>  @Model.Level</b> '    Pontos disponiveis para gastar.</p></h2>
               <p><i>A cada nivel que voce passa voce ganha um de credito para gastar aqui.</i></p>
             </div>
+
+
           <div class="upgrade">
             <div class="icone"></div>
               <div class="conteudo">
                 <h3>SLIMES TOTAIS</h3>
-                <p>A cada upgrade voce ganha mais um slime.</p>
+                <p>Voce ganha um slime que multiplica seus ganhos x10.</p>
                 <p>Nível atual: <span class="quantidade">@Model.UpgradeValue</span></p>
               </div>
               <form asp-page-handler="IncrementSlime">
-                <button type="submit" class="botao">10 xp</button>
+                <button type="submit" class="botao">@Model.Custo Xp</button>
+              </form>
+            </div>
+
+          <div class="upgrade">
+            <div class="icone"></div>
+              <div class="conteudo">
+                <h3>MULTIPLICADOR DE MOEDAS</h3>
+                <p>Ganha mais 0.1 no seu multiplicador de moedas.</p>
+                <p>Nivel do multiplicador atual: <span class="quantidade">@Model.existingUser.Upgrade2</span></p>
+              </div>
+              <form asp-page-handler="IncrementMultiplicador">
+                <button type="submit" class="botao">@Model.Custo2 Xp</button>
+              </form>
+            </div>
+
+          <div class="upgrade">
+            <div class="icone"></div>
+              <div class="conteudo">
+                <h3>MULTIPLICADOR DE XP</h3>
+                <p>Ganha mais 0.1 no seu multiplicador de XP.</p>
+                <p>Nivel do multiplicador atual: <span class="quantidade">@Model.existingUser.Upgrade3</span></p>
+              </div>
+              <form asp-page-handler="IncrementMultiplicadorXp">
+                <button type="submit" class="botao">@Model.Custo3 Xp</button>
               </form>
             </div>
     
@@ -71,9 +97,9 @@
         <div class="tela">
           <!-- Conteúdo da segunda tela -->
           <div class="informacao-tela">
-              <h3>Gold</h3>
-              <p>Quantidade de Gold disponível para gastar</p>
-              <p>Informação adicional</p>
+              <h1>GOLD</h1>
+              <h2><p>'<b>  @Model.Moeda</b> '    Moedas disponiveis para gastar.</p></h2>
+              <p><i>A cada clike na tela voce ganha @Model.existingUser.Upgrade2 de moeda's para gastar aqui.</i></p>
             </div>
           <div class="upgrade">
             <div class="icone"></div>
@@ -114,9 +140,9 @@
         </div>
         <div class="tela">
           <div class="informacao-tela">
-              <h3>Diamante</h3>
-              <p>Quantidade de Diamante disponível para gastar</p>
-              <p>Informação adicional</p>
+              <h1>DIAMANTE</h1>
+              <h2><p>'<b>  @Model.Diamante</b> '    Diamante's disponiveis para gastar.</p></h2>
+              <p><i>A cada level voce ganha 2 diamantes para gastar aqui.</i></p>
             </div>
           <!-- Conteúdo da terceira tela -->
           <div class="upgrade">
@@ -144,24 +170,59 @@
                 <p>Informações sobre o upgrade.</p>
                 <p>Nível atual: <span class="nivel">1</span></p>
               </div>
+              
             <button class="botao">$10</button>
           </div>
         </div>
         <div class="tela">
           <!-- Conteúdo da terceira tela -->
           <div class="informacao-tela">
-              <h3>Wipe</h3>
-              <button class="botao">Prestígio</button>
+            <div class="informacao-tela">
+              <h1>GEMA</h1>
+              <h2><p>'<b>  @Model.Gema</b> '    Gema's disponiveis para gastar.</p></h2>
+              <p><i>A cada Wipe voce ganha gemas baseado no seu xp e gold acumulado ate aqui clicar aqui reseta seu rank... ao clicar no botao Wipe voce resetara sua conta mantera suas gemas e upgrades dentro da categoria wipe e adicionara mais <B>@Model.WipeValor</B> a seu montante.</i></p>
             </div>
-        </div>
-        <!-- Adicione mais telas se necessário -->
-      </div>
-    </div>
-  <div class="div2" asp-page-handler="IncrementMoeda">
-    
-    <!-- Conteúdo da segunda div -->
-    <div class="container2">
+          </div>
+          <form asp-page-handler="Wipe">
+            <button type="submit" class="botao">WIPE</button>
+          </form>
+          <div class="upgrade">
+            <div class="icone"></div>
+            <div class="conteudo">
+              <h3>MULTIPLICADOR DE MOEDAS</h3>
+              <p>Ganha mais 0.1 no seu multiplicador de moedas.</p>
+              <p>Nivel do multiplicador atual: <span class="quantidade">@Model.existingUser.Upgrade10</span></p>
+            </div>
+            <form asp-page-handler="IncrementMultiplicadorGema">
+            <button type="submit" class="botao">@Model.Custo10 G</button>
+            </form>
+          </div>
 
+          <div class="upgrade">
+            <div class="icone"></div>
+            <div class="conteudo">
+              <h3>MULTIPLICADOR DE XP</h3>
+              <p>Ganha mais 0.1 no seu multiplicador de XP.</p>
+              <p>Nivel do multiplicador atual: <span class="quantidade">@Model.existingUser.Upgrade11</span></p>
+            </div>
+            <form asp-page-handler="IncrementMultiplicadorXpGema">
+              <button type="submit" class="botao">@Model.Custo11 G</button>
+            </form>
+          </div>
+        </div>
+      </div>
+        <!-- Adicione mais telas se necessário -->
+    </div>
+  </div>
+
+  <div class="divbotaoClick">
+    <form asp-page-handler="IncrementMoeda">
+    <button type="submit" class="botaoClick"></button>
+    </form>
+  </div>
+    
+  <div class="div2">
+    <div class="container2">
       <div class="textprofile">
         <p>@Model.UsuarioNome <br> Level:@Model.Level</p>  
       </div> 
@@ -176,26 +237,26 @@
           <p>@Model.Gema</p>  
         </div>
       </div> 
-
     <div class="profile-icon" onclick="toggleMenu()">
-      
       <i class="fas fa-user-circle"></i>
-      
     </div>
     <div class="menu">
         <a class="menu-item" href="#">Configuração</a>
         <a class="menu-item" href="#" onclick="logout()">Log Out</a>
     </div>
 
-    <div class="image-container4">
-      <img src="~/img/moeda.png" alt="moedas" >
+    <div class="ajuste">
+      <div class="image-container4">
+        <img src="~/img/moeda.png" alt="moedas" >
+      </div>
+      <div class="image-container5">
+        <img src="~/img/diamante.png" alt="moedas" >
+      </div>
+      <div class="image-container6">
+        <img src="~/img/gema.png" alt="moedas" >
+      </div>
     </div>
-    <div class="image-container5">
-      <img src="~/img/diamante.png" alt="moedas" >
-    </div>
-    <div class="image-container6">
-      <img src="~/img/gema.png" alt="moedas" >
-    </div>
+
     @foreach (var slime in Model?.Slimes ?? new List<main.SlimeData>())
     {
         <div class="slime slime-@slime.X" style="left: @(slime.X)%; margin-top: 18%; transform: scale(0.22); position: absolute">
@@ -205,11 +266,8 @@
 
   </div>
 
-
-
   <!-- Seus outros elementos HTML aqui -->
 </div>
-
 
 
 

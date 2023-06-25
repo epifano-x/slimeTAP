@@ -38,8 +38,14 @@ namespace SlimeTAP.Migrations
                     b.Property<float?>("Moeda")
                         .HasColumnType("REAL");
 
+                    b.Property<float?>("MoedaTotal")
+                        .HasColumnType("REAL");
+
                     b.Property<float?>("Multiplicador")
                         .HasColumnType("REAL");
+
+                    b.Property<int>("Nivel")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Senha")
                         .IsRequired()

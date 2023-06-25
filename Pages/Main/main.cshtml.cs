@@ -32,15 +32,21 @@ namespace SlimeTAP.Pages.Main
         public int Moeda { get; set; }
         public int Diamante { get; set; }
         public int Gema { get; set; }
-
         public string UsuarioNome { get; set; } // Propriedade para armazenar o nome do usuário
+        public int Custo { get; set; }
+        public int Custo2 { get; set; }
+        public int Custo3 { get; set; }
 
+        public float WipeValor { get; set; }
+        public int Custo10 { get; set; }
+        public int Custo11 { get; set; }
+        public int Multiplicador { get; set; }
         public UsuarioModel? existingUser { get; set; }
-
+        public int Nivel { get; set; }
         public void OnGet()
         {
             
-
+            
             var httpContext = HttpContext;
             // Agora você pode acessar a propriedade HttpContext para obter o acesso à sessão, por exemplo:
             string usuarioNomeCookie = Request.Cookies["UsuarioNome"];
@@ -55,6 +61,16 @@ namespace SlimeTAP.Pages.Main
             Diamante = Convert.ToInt32(existingUser.Diamante);
             Gema = Convert.ToInt32(existingUser.Gema);
             Slimes = GenerateSlimeData(UpgradeValue);
+            
+            Multiplicador = Convert.ToInt32(existingUser.Upgrade2);
+            Custo = UpgradeValue*10;
+            Custo2 = Convert.ToInt32(existingUser.Upgrade2)*2;
+            Custo3 = Convert.ToInt32(existingUser.Upgrade3)*2;
+            Custo10 = Convert.ToInt32(existingUser.Upgrade10)*2;
+            Custo11 = Convert.ToInt32(existingUser.Upgrade11)*2;
+            WipeValor = (float)(Convert.ToInt32(existingUser.Xp) * 0.1) + (float)(Convert.ToInt32(existingUser.MoedaTotal) * 0.001);
+
+            WipeValor = Convert.ToInt32(WipeValor);
         }
         }
 
@@ -68,24 +84,176 @@ namespace SlimeTAP.Pages.Main
             if (Usuario != null)
             {
                 if(Usuario.Level > 10){
-                    Usuario.Level -= 10;
-                    Usuario.Upgrade1 += 1;
-                    _dbContext.SaveChanges(); // Salva as alterações no banco de dados
-
-                    // Redirecionar para a página principal sem adicionar o handler à URL
+                    Custo = Convert.ToInt32(Usuario.Upgrade1)*10;
+                    Usuario.Level -= Custo;
+                    if(Usuario.Level >=0 ){
+                        Usuario.Upgrade1 += 1;
+                        _dbContext.SaveChanges(); // Salva as alterações no banco de dados
+                        return RedirectToPage("/Main/main");
+                    }else{
+                        return RedirectToPage("/Main/main");
+                    }
                     return RedirectToPage("/Main/main");
                 }else{
                     return RedirectToPage("/Main/main");
-                    
                 }
-
             }
-
-            // Restante da lógica...
-
-            // Em caso de erro ou algum outro resultado, você pode retornar uma resposta adequada
             return BadRequest();
         }
+
+        public IActionResult OnPostIncrementMultiplicador()
+        {
+            var httpContext = HttpContext;
+            // Agora você pode acessar a propriedade HttpContext para obter o acesso à sessão, por exemplo:
+            string usuarioNomeCookie = Request.Cookies["UsuarioNome"];
+            Usuario = _dbContext.Set<UsuarioModel>().FirstOrDefault(u => u.UsuarioNome == usuarioNomeCookie);
+            if (Usuario != null)
+            {
+                if(Usuario.Level > 1){
+                    
+                    Custo2 = Convert.ToInt32(Usuario.Upgrade2)*2;
+                    Usuario.Level -= Custo2;
+                    
+                    if(Usuario.Level >=0 ){
+                        System.Console.WriteLine(Usuario.Level);
+                        Usuario.Upgrade2 += 1;
+                        _dbContext.SaveChanges();
+                        return RedirectToPage("/Main/main");
+                    }else{
+                        return RedirectToPage("/Main/main");
+                    }
+                    return RedirectToPage("/Main/main");
+                }else{
+                    return RedirectToPage("/Main/main");
+                }
+            }
+            return BadRequest();
+        }
+        public IActionResult OnPostIncrementMultiplicadorGema()
+        {
+            var httpContext = HttpContext;
+            // Agora você pode acessar a propriedade HttpContext para obter o acesso à sessão, por exemplo:
+            string usuarioNomeCookie = Request.Cookies["UsuarioNome"];
+            Usuario = _dbContext.Set<UsuarioModel>().FirstOrDefault(u => u.UsuarioNome == usuarioNomeCookie);
+            if (Usuario != null)
+            {
+                if(Usuario.Gema > 1){
+                    
+                    Custo10 = Convert.ToInt32(Usuario.Upgrade10)*2;
+                    Usuario.Gema -= Custo10;
+                    
+                    if(Usuario.Gema >=0 ){
+                        System.Console.WriteLine(Usuario.Gema);
+                        Usuario.Upgrade10 += 1;
+                        _dbContext.SaveChanges();
+                        return RedirectToPage("/Main/main");
+                    }else{
+                        return RedirectToPage("/Main/main");
+                    }
+                    return RedirectToPage("/Main/main");
+                }else{
+                    return RedirectToPage("/Main/main");
+                }
+            }
+            return BadRequest();
+        }
+
+        public IActionResult OnPostIncrementMultiplicadorXp()
+        {
+            var httpContext = HttpContext;
+            // Agora você pode acessar a propriedade HttpContext para obter o acesso à sessão, por exemplo:
+            string usuarioNomeCookie = Request.Cookies["UsuarioNome"];
+            Usuario = _dbContext.Set<UsuarioModel>().FirstOrDefault(u => u.UsuarioNome == usuarioNomeCookie);
+            if (Usuario != null)
+            {
+                System.Console.WriteLine(Usuario.Nivel);
+                if(Usuario.Level > 1){
+                    
+                    Custo3 = Convert.ToInt32(Usuario.Upgrade3)*2;
+                    Usuario.Level -= Custo3;
+                    
+                    if(Usuario.Level >=0 ){
+                        
+                        Usuario.Upgrade3 += 1;
+                        _dbContext.SaveChanges();
+                        return RedirectToPage("/Main/main");
+                    }else{
+                        return RedirectToPage("/Main/main");
+                    }
+                    return RedirectToPage("/Main/main");
+                }else{
+                    return RedirectToPage("/Main/main");
+                }
+            }
+            return BadRequest();
+        }  
+
+        public IActionResult OnPostIncrementMultiplicadorXpGema()
+        {
+            var httpContext = HttpContext;
+            // Agora você pode acessar a propriedade HttpContext para obter o acesso à sessão, por exemplo:
+            string usuarioNomeCookie = Request.Cookies["UsuarioNome"];
+            Usuario = _dbContext.Set<UsuarioModel>().FirstOrDefault(u => u.UsuarioNome == usuarioNomeCookie);
+            if (Usuario != null)
+            {
+                System.Console.WriteLine(Usuario.Nivel);
+                if(Usuario.Gema > 1){
+                    
+                    Custo11 = Convert.ToInt32(Usuario.Upgrade11)*2;
+                    Usuario.Gema -= Custo11;
+                    
+                    if(Usuario.Gema >=0 ){
+                        
+                        Usuario.Upgrade11 += 1;
+                        _dbContext.SaveChanges();
+                        return RedirectToPage("/Main/main");
+                    }else{
+                        return RedirectToPage("/Main/main");
+                    }
+                    return RedirectToPage("/Main/main");
+                }else{
+                    return RedirectToPage("/Main/main");
+                }
+            }
+            return BadRequest();
+        }  
+
+        public IActionResult OnPostIncrementMoeda()
+        {
+            var httpContext = HttpContext;
+            // Agora você pode acessar a propriedade HttpContext para obter o acesso à sessão, por exemplo:
+            string usuarioNomeCookie = Request.Cookies["UsuarioNome"];
+            Usuario = _dbContext.Set<UsuarioModel>().FirstOrDefault(u => u.UsuarioNome == usuarioNomeCookie);
+            if (Usuario != null)
+            {
+                
+                Usuario.Nivel += Convert.ToInt32(Usuario.Upgrade11)+(1*(Convert.ToInt32(Usuario.Upgrade3)));
+                if(Usuario.Nivel>=100){
+                    Usuario.Level++;
+                    Usuario.Xp++;
+                    Usuario.Diamante += 2;
+                    Usuario.Nivel = 0;
+                }
+                if(Usuario.Upgrade1 == 1){
+                    Usuario.Moeda += (Convert.ToInt32(Usuario.Upgrade2)*1);
+                    Usuario.MoedaTotal += (Convert.ToInt32(Usuario.Upgrade2)*1);
+                    _dbContext.SaveChanges(); // Salva as alterações no banco de dados    
+                    return RedirectToPage("/Main/main");
+                }else{
+                    Usuario.Moeda += Convert.ToInt32(Usuario.Upgrade10)+(Convert.ToInt32(Usuario.Upgrade2)*1)*(10*(Convert.ToInt32(Usuario.Upgrade1)-1));
+                    Usuario.MoedaTotal += Convert.ToInt32(Usuario.Upgrade10)+(Convert.ToInt32(Usuario.Upgrade2)*1)*(10*(Convert.ToInt32(Usuario.Upgrade1)-1));
+                    _dbContext.SaveChanges(); // Salva as alterações no banco de dados    
+                    return RedirectToPage("/Main/main");
+                }
+
+                
+            }
+            return BadRequest();
+        }
+
+
+
+
 
 
 
@@ -143,5 +311,51 @@ namespace SlimeTAP.Pages.Main
 
             return data;
         }
+
+
+        public IActionResult OnPostWipe()
+        {
+            var httpContext = HttpContext;
+            // Agora você pode acessar a propriedade HttpContext para obter o acesso à sessão, por exemplo:
+            string usuarioNomeCookie = Request.Cookies["UsuarioNome"];
+            Usuario = _dbContext.Set<UsuarioModel>().FirstOrDefault(u => u.UsuarioNome == usuarioNomeCookie);
+            if (Usuario != null)
+            {
+                
+                WipeValor = (float)(Convert.ToInt32(Usuario.Xp) * 0.1) + (float)(Convert.ToInt32(Usuario.MoedaTotal) * 0.001);
+
+
+                Usuario.Gema += Convert.ToInt32(WipeValor);
+                Usuario.Moeda = 0 ;
+                Usuario.Level = 1 ;
+                Usuario.MoedaTotal = 0;
+                Usuario.Diamante = 0;
+                Usuario.Xp = 0;
+                Usuario.Nivel = 1;
+                Usuario.Upgrade1 = 1;
+                Usuario.Upgrade2 = 1;
+                Usuario.Upgrade3 = 1;
+                Usuario.Upgrade4 = 1;
+                Usuario.Upgrade5 = 1;
+                Usuario.Upgrade6 = 1;
+                Usuario.Upgrade7 = 1;
+                Usuario.Upgrade8 = 1;
+                Usuario.Upgrade9 = 1;
+                _dbContext.SaveChanges(); // Salva as alterações no banco de dados    
+                return RedirectToPage("/Main/main");
+
+                
+            }
+            return BadRequest();
+        }
+
+
+
+
+
+
+
+
+
     }
 }

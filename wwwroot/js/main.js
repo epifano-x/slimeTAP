@@ -66,6 +66,14 @@ document.querySelector('.div2').onclick = function() {
   });
 };
 
+document.querySelector('.divbotaoClick').onclick = function() {
+  var slimeImages = document.querySelectorAll('.slime img');
+  
+  slimeImages.forEach(function(image) {
+    zoomImage(image);
+  });
+};
+
 
 
 function bloquearSelecaoTexto() {
@@ -78,16 +86,19 @@ function bloquearSelecaoTexto() {
 bloquearSelecaoTexto()
   
 
-var div2 = document.querySelector('.div2');
+window.addEventListener('load', function() {
+  var div2 = document.querySelector('.divbotaoClick');
 
-div2.addEventListener('click', function(event) {
-  var x = event.clientX;
-  var y = event.clientY;
+  var divWidth = (div2.offsetWidth/2); // Largura da div
+  var divHeight = div2.offsetHeight/2; // Altura da div
+
+  var randomX = Math.floor(Math.random() * divWidth); // Posição X aleatória dentro da div
+  var randomY = Math.floor(Math.random() * divHeight); // Posição Y aleatória dentro da div
 
   var moeda = document.createElement('div');
   moeda.classList.add('moeda');
-  moeda.style.left = x + 'px';
-  moeda.style.top = y + 'px';
+  moeda.style.left = randomX+800 + 'px';
+  moeda.style.top = randomY+300 + 'px';
 
   div2.appendChild(moeda);
 
@@ -95,6 +106,13 @@ div2.addEventListener('click', function(event) {
     div2.removeChild(moeda);
   }, 1000);
 });
+window.addEventListener('load', function() {
+  var slimeImages = document.querySelectorAll('.slime-image');
+  slimeImages.forEach(function(image) {
+    zoomImage(image);
+  });
+});
+
 
 $(document).ready(function () {
     // Manipulador de evento para o clique no botão
