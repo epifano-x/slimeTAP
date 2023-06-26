@@ -73,7 +73,7 @@
               <div class="conteudo">
                 <h3>MULTIPLICADOR DE MOEDAS</h3>
                 <p>Ganha mais 0.1 no seu multiplicador de moedas.</p>
-                <p>Nivel do multiplicador atual: <span class="quantidade">@Model.existingUser.Upgrade2</span></p>
+                <p>Nivel do multiplicador atual: <span class="quantidade">@Model.Multiplicador</span></p>
               </div>
               <form asp-page-handler="IncrementMultiplicador">
                 <button type="submit" class="botao">@Model.Custo2 Xp</button>
@@ -85,7 +85,7 @@
               <div class="conteudo">
                 <h3>MULTIPLICADOR DE XP</h3>
                 <p>Ganha mais 0.1 no seu multiplicador de XP.</p>
-                <p>Nivel do multiplicador atual: <span class="quantidade">@Model.existingUser.Upgrade3</span></p>
+                <p>Nivel do multiplicador atual: <span class="quantidade">@Model.Upgrade3</span></p>
               </div>
               <form asp-page-handler="IncrementMultiplicadorXp">
                 <button type="submit" class="botao">@Model.Custo3 Xp</button>
@@ -99,7 +99,7 @@
           <div class="informacao-tela">
               <h1>GOLD</h1>
               <h2><p>'<b>  @Model.Moeda</b> '    Moedas disponiveis para gastar.</p></h2>
-              <p><i>A cada clike na tela voce ganha @Model.existingUser.Upgrade2 de moeda's para gastar aqui.</i></p>
+              <p><i>A cada clike na tela voce ganha @Model.Multiplicador de moeda's para gastar aqui.</i></p>
             </div>
 
             <div class="upgrade">
@@ -125,25 +125,25 @@
                 <button type="submit" class="botao">@Model.Custo5 G</button>
               </form>
             </div>
+            <div class="upgrade">
+            <div class="icone"></div>
+            <div class="conteudo">
+              <h3>QUEBRANDO A BANCA</h3>
+              <p>A cada nivel voce ganha 0.1 de multiplicador nos seus ganhos de gema no wipe.</p>
+              <p>Nivel do multiplicador atual: <span class="quantidade">@Model.existingUser.Upgrade5</span></p>
+            </div>
+            <form asp-page-handler="IncrementDobroXp">
+              <button type="submit" class="botao">@Model.Custo5 D</button>
+            </form> 
+          </div>
         </div>
         <div class="tela">
           <div class="informacao-tela">
-              <h1>DIAMANTE</h1>
-              <h2><p>'<b>  @Model.Diamante</b> '    Diamante's disponiveis para gastar.</p></h2>
-              <p><i>A cada level voce ganha 2 diamantes para gastar aqui.</i></p>
-            </div>
-          <!-- Conteúdo da terceira tela -->
-            <div class="upgrade">
-              <div class="icone"></div>
-              <div class="conteudo">
-                <h3>QUEBRANDO A BANCA</h3>
-                <p>A cada nivel voce ganha 0.1 de multiplicador nos seus ganhos de gema no wipe.</p>
-                <p>Nivel do multiplicador atual: <span class="quantidade">@Model.existingUser.Upgrade6</span></p>
-              </div>
-              <form asp-page-handler="GemaMultiplicador">
-                <button type="submit" class="botao">@Model.Custo6 D</button>
-              </form>
-            </div>
+            <h1>DIAMANTE</h1>
+            <h2><p>'<b>  @Model.Diamante</b> '    Diamante's disponiveis para gastar.</p></h2>
+            <p><i>A cada level voce ganha 2 diamantes para gastar aqui.</i></p>
+          </div>
+ 
         </div>
         <div class="tela">
           <!-- Conteúdo da terceira tela -->
@@ -210,7 +210,7 @@
       </div> 
 
     <div class="menu">
-        <a class="menu-item" href="#">Configuração</a>
+        
         <a class="menu-item" href="#" onclick="logout()">Log Out</a>
     </div>
 

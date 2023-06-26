@@ -21,7 +21,7 @@ namespace slimeTAP.Models
         public int Level { get; set; }
         public int Xp { get; set; }
         public int Nivel { get; set; }
-        public int Diamante { get; set; }
+        public int? Diamante { get; set; }
         public int? Gema { get; set; }
         public float? Multiplicador { get; set; }
         public int? Upgrade1 { get; set; }

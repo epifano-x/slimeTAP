@@ -47,7 +47,9 @@ namespace SlimeTAP.Pages.Main
         public int Nivel { get; set; }
         public int LevelAtual { get; set; }
         public int MoedaAtual { get; set; }
-        public int XpAtual { get; set; }
+        
+        public int Upgrade3 { get; set; }
+        
         public void OnGet()
         {
             
@@ -71,9 +73,10 @@ namespace SlimeTAP.Pages.Main
                 Custo = UpgradeValue*10;
                 Custo2 = Convert.ToInt32(existingUser.Upgrade2)*2;
                 Custo3 = Convert.ToInt32(existingUser.Upgrade3)*3;
+                Upgrade3 = Convert.ToInt32(existingUser.Upgrade3)*3;
                 Custo4 = Convert.ToInt32(existingUser.Upgrade4)*300;
                 Custo5 = Convert.ToInt32(existingUser.Upgrade5)*480;
-                Custo6 = Convert.ToInt32(existingUser.Upgrade6)*76;
+                Custo6 = 7600;
 
 
 
@@ -138,7 +141,7 @@ namespace SlimeTAP.Pages.Main
                     }else{
                         return RedirectToPage("/Main/main");
                     }
-                    return RedirectToPage("/Main/main");
+                    
                 }else{
                     return RedirectToPage("/Main/main");
                 }
@@ -215,7 +218,7 @@ namespace SlimeTAP.Pages.Main
                 
                 if(Usuario.Moeda > 1){
                     
-                    Custo4 = Convert.ToInt32(Usuario.Upgrade4)*2;
+                    Custo4 = Convert.ToInt32(Usuario.Upgrade4)*300;
                     Usuario.Moeda -= Custo4;
                     
                     if(Usuario.Moeda >=0 ){
@@ -246,7 +249,7 @@ namespace SlimeTAP.Pages.Main
                 
                 if(Usuario.Moeda > 1){
                     
-                    Custo5 = Convert.ToInt32(Usuario.Upgrade5)*2;
+                    Custo5 = Convert.ToInt32(Usuario.Upgrade5)*480;
                     Usuario.Moeda -= Custo5;
                     
                     if(Usuario.Moeda >=0 ){
@@ -265,37 +268,7 @@ namespace SlimeTAP.Pages.Main
             }
             return BadRequest();
         }  
-
-        public IActionResult OnPostIncrementGemaMultiplicador()
-        {
-            var httpContext = HttpContext;
-            // Agora você pode acessar a propriedade HttpContext para obter o acesso à sessão, por exemplo:
-            string usuarioNomeCookie = Request.Cookies["UsuarioNome"];
-            Usuario = _dbContext.Set<UsuarioModel>().FirstOrDefault(u => u.UsuarioNome == usuarioNomeCookie);
-            if (Usuario != null)
-            {
-                
-                if(Usuario.Diamante > 1){
-                    
-                    Custo6 = Convert.ToInt32(Usuario.Upgrade6)*2;
-                    Usuario.Diamante -= Custo6;
-                    
-                    if(Usuario.Diamante >=0 ){
-                        if(Usuario.Upgrade6>0){
-                            Usuario.Upgrade6 += 1;
-                        _dbContext.SaveChanges();
-                        }
-                        return RedirectToPage("/Main/main");
-                    }else{
-                        return RedirectToPage("/Main/main");
-                    }
-                    return RedirectToPage("/Main/main");
-                }else{
-                    return RedirectToPage("/Main/main");
-                }
-            }
-            return BadRequest();
-        }  
+ 
         public IActionResult OnPostIncrementMultiplicadorXpGema()
         {
             var httpContext = HttpContext;
@@ -310,8 +283,8 @@ namespace SlimeTAP.Pages.Main
                     Custo11 = Convert.ToInt32(Usuario.Upgrade11)*2;
                     Usuario.Gema -= Custo11;
                     
-                    if(Usuario.Gema >=0 ){
-                        
+                    if(Usuario.Gema >= 0 ){
+                         
                         Usuario.Upgrade11 += 1;
                         _dbContext.SaveChanges();
                         return RedirectToPage("/Main/main");
